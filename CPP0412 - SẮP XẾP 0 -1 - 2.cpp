@@ -1,35 +1,34 @@
-// Created by Nguyễn Mạnh Quân
-
-#include<bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
 
-#define mp make_pair
-#define fi first
-#define se second
-#define pb push_back
-#define sz size()
-#define ll long long
-#define FOR(i, a, b) for(int i = a; i <= b; ++i)
-#define FORD(i, a, b) for(int i = a; i >= b; --i)
-#define faster() ios_base::sync_with_stdio(0); cin.tie(NULL);cout.tie(NULL);
-#define vi vector<int>
-#define vll vector<ll>
-#define endl '\n'
+int a[100001];
+void swap(int& x, int& y) {
+    int temp = x;
+    x = y;
+    y = temp;
+}
 
-int a[1000005];
+void selectionSort(int arr[], int n) {
+    for (int i = 1; i <= n; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j <= n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        swap(arr[i], arr[minIndex]);
+    }
+}
 
-int main()
-{
-    faster();
+int main() {
     int t, n;
     cin >> t;
-    while(t--)
-    {
+    while (t--) {
         cin >> n;
-        FOR(i, 1, n) cin >> a[i];
-        sort(a + 1, a + 1 + n);
-        FOR(i, 1, n) cout << a[i] << ' ';
+        for (int i = 1; i <= n; i++) cin >> a[i];
+        selectionSort(a, n);
+        for (int i = 1; i <= n; i++) cout << a[i] << ' ';
         cout << endl;
     }
     return 0;
